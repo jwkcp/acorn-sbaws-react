@@ -1,9 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import Todo from './Todo';
+import React from 'react';
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [
+        {
+          id: 0,
+          title: "Hello, world1",
+          done: true
+        },
+        {
+          id: 1,
+          title: "Hello, world2",
+          done: false
+        }
+      ]
+    }
+  }
+
+  render() {
   return (
     <div className="App">
+      // 아래 수정 필요
+      var todoItems = this.state.items.map(item, dix) => (
+        <Todo item={item} key={item.id} />
+      );
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,6 +46,8 @@ function App() {
       </header>
     </div>
   );
+  }
+
 }
 
 export default App;
