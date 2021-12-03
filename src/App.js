@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Todo from './Todo';
 import React from 'react';
+import { Paper, List } from "@material-ui/core";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,33 +19,15 @@ class App extends React.Component {
           done: false
         }
       ]
-    }
+    };
   }
 
   render() {
-  return (
-    <div className="App">
-      // 아래 수정 필요
-      var todoItems = this.state.items.map(item, dix) => (
-        <Todo item={item} key={item.id} />
-      );
+    this.state.items.map((item, idx) => (
+      <Todo item={item} key={item.id} />
+    ));
 
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return <div className="App">{todoItems}</div>
   }
 
 }
