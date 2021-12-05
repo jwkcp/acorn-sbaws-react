@@ -23,12 +23,26 @@ class App extends React.Component {
   }
 
   render() {
-    this.state.items.map((item, idx) => (
-      <Todo item={item} key={item.id} />
-    ));
+    var todoItems = this.state.items.length > 0 && (
+      <Paper style={{ margin: 16 }}>
+        <List>
+          {this.state.items.map((item, idx) => (
+            <Todo item={item} key={item.id} />
+          ))}
+        </List>
+      </Paper>
+    );
 
     return <div className="App">{todoItems}</div>
   }
+
+  // render() {
+  //   var todoItems = this.state.items.map((item, idx) => (
+  //     <Todo item={item} key={item.id} />
+  //   ));
+
+  //   return <div className="App">{todoItems}</div>
+  // }
 
 }
 
