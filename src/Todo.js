@@ -14,6 +14,9 @@ class Todo extends React.Component {
 
         return (
             <ListItem>
+                <span class="material-icons-outlined">
+done
+</span>
                 <Checkbox checked={item.done} />
                 <ListItemText>
                     <InputBase 

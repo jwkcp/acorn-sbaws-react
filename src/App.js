@@ -10,12 +10,12 @@ class App extends React.Component {
     this.state = {
       items: [
         {
-          id: 0,
+          id: '0',
           title: "Hello, world1",
           done: true
         },
         {
-          id: 1,
+          id: '1',
           title: "Hello, world2",
           done: false
         }
@@ -23,12 +23,24 @@ class App extends React.Component {
     };
   }
 
+  add = (item) => {
+    const thisItems = this.state.items;
+    item.id = "ID-" + thisItems.length;
+    item.done = false;
+    thisItems.push(item);
+    this.setState({
+      items: thisItems
+    });
+    console.log("items: ", this.state.items);
+  }
+
   render() {
     var todoItems = this.state.items.length > 0 && (
       <Paper style={{ margin: 16 }}>
         <List>
           {this.state.items.map((item, idx) => (
-            <Todo item={item} key={item.id} />
+            // <Todo item={item} key={item.id} />
+            <Todo item={item} key={item.id}/>
           ))}
         </List>
       </Paper>
@@ -37,22 +49,12 @@ class App extends React.Component {
     return (
     <div className="App">
       <Container maxWidth="md">
-        <AddTodo />
+        <AddTodo add={this.add} />
         <div className="TodoList">{todoItems}</div>
       </Container>
     </div>
     ) 
-    
   }
-
-  // render() {
-  //   var todoItems = this.state.items.map((item, idx) => (
-  //     <Todo item={item} key={item.id} />
-  //   ));
-
-  //   return <div className="App">{todoItems}</div>
-  // }
-
 }
 
 export default App;
