@@ -21,6 +21,10 @@ class AddTodo extends React.Component {
     };
 
     onButtonClick = () => {
+        if (this.state.item.title === "") {
+            console.log("item must not be empty");
+            return;
+        }
         this.add(this.state.item);
         this.setState({ item: { title: ""}});
     }
