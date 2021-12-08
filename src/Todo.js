@@ -34,6 +34,12 @@ class Todo extends React.Component {
         }
     }
 
+    editEventHandler = e => {
+        const thisItem = this.state.item;
+        thisItem.title = e.target.value;
+        this.setState({ item: thisItem });
+    }
+
     render() {
         const item = this.state.item;
 
@@ -48,6 +54,7 @@ class Todo extends React.Component {
                         }}
                         onClick={this.offReadOnlyMode}
                         onKeyPress={this.enterKeyEventHandler}
+                        onChange={this.editEventHandler}
                         type="text"
                         id={item.id}
                         name={item.id}
