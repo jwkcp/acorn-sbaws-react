@@ -39,15 +39,19 @@ class App extends React.Component {
         //     });
         // });
         // call("/todo", "GET", null).then((res) => console.log(res));
+        console.log("Before call ---")
         call("/todo", "GET", null).then((response) => {
-            response.json().then((res) => {
-                console.log("==>", res);
-            });
-            console.log("res: ", typeof response);
+            console.log("call back start --")
+            // response.json().then((res) => {
+            //     console.log("==>", res);
+            // });
+            console.log("res: ", response);
             this.setState({
                 items: [],
             });
+            console.log("call back end --")
         });
+        console.log("After call --")
     }
 
     //     fetch('http://localhost:8080/todo', requestOptions)
