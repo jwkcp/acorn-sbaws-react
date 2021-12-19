@@ -15,6 +15,7 @@ export function call(api, method, request) {
 
     return fetch(options.url, options).then((response) =>
         response.json().then((json) => {
+            console.log("Before response ok check");
             if (!response.ok) {
                 return Promise.reject(json);
             }
