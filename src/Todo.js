@@ -1,6 +1,13 @@
-import React from 'react';
-import { ListItem, ListItemText, InputBase, Checkbox, ListItemSecondaryAction, IconButton } from "@material-ui/core";
-import DeleteOutlined from '@material-ui/icons/DeleteOutlined'
+import React from "react";
+import {
+    ListItem,
+    ListItemText,
+    InputBase,
+    Checkbox,
+    ListItemSecondaryAction,
+    IconButton,
+} from "@material-ui/core";
+import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
 
 class Todo extends React.Component {
     constructor(props) {
@@ -9,57 +16,61 @@ class Todo extends React.Component {
             item: props.item,
             readOnly: true,
         };
+        this.update = props.update;
         this.delete = props.delete;
     }
 
     deleteEventHandler = () => {
-        this.delete(this.state.item)
-    }
+        this.delete(this.state.item);
+    };
 
     offReadOnlyMode = () => {
         console.log("Event!", this.state.readOnly);
         this.setState({ readOnly: false }, () => {
-            console.log("ReadOnly? ", this.state.readOnly)
+            console.log("ReadOnly? ", this.state.readOnly);
         });
-    }
+    };
 
-    enterKeyEventHandler = e => {
+    enterKeyEventHandler = (e) => {
         console.log("Key Pressed: ", e.key);
 
         if (e.key === "Enter") {
             console.log("Enter key pressed");
             this.setState({
-                readOnly: true
+                readOnly: true,
             });
+            this.update(this.state.item);
         }
-    }
+    };
 
-    editEventHandler = e => {
+    editEventHandler = (e) => {
         const thisItem = this.state.item;
         thisItem.title = e.target.value;
         this.setState({ item: thisItem });
-    }
+    };
 
-    checkEventHandler = e => {
+    checkEventHandler = (e) => {
         const thisItem = this.state.item;
         thisItem.done = !thisItem.done;
         this.setState({ item: thisItem });
-    }
+        this.update(this.state.item);
+    };
 
     render() {
         const item = this.state.item;
 
         return (
             <ListItem>
-                <Checkbox 
-                    checked={item.done} 
+                <Checkbox
+                    checked={item.done}
                     onChange={this.checkEventHandler}
-                    disableRipple/>
+                    disableRipple
+                />
                 <ListItemText>
-                    <InputBase 
+                    <InputBase
                         inputProps={{
                             "aria-label": "naked",
-                            readOnly: this.state.readOnly
+                            readOnly: this.state.readOnly,
                         }}
                         onClick={this.offReadOnlyMode}
                         onKeyPress={this.enterKeyEventHandler}
@@ -73,7 +84,10 @@ class Todo extends React.Component {
                     />
                 </ListItemText>
                 <ListItemSecondaryAction>
-                    <IconButton aria-label="Delete Todo" onClick={this.deleteEventHandler}>
+                    <IconButton
+                        aria-label="Delete Todo"
+                        onClick={this.deleteEventHandler}
+                    >
                         <DeleteOutlined />
                     </IconButton>
                 </ListItemSecondaryAction>
