@@ -2,7 +2,17 @@ import "./App.css";
 import Todo from "./Todo";
 import AddTodo from "./AppTodo";
 import React from "react";
-import { Paper, List, Container, Grid, Button, AppBar, Toolbar, Typography, CircularProgress } from "@material-ui/core";
+import {
+    Paper,
+    List,
+    Container,
+    Grid,
+    Button,
+    AppBar,
+    Toolbar,
+    Typography,
+    CircularProgress,
+} from "@material-ui/core";
 import { call, signout } from "./service/ApiService";
 
 class App extends React.Component {
@@ -77,13 +87,15 @@ class App extends React.Component {
         var navigationBar = (
             <AppBar position="static">
                 <Toolbar>
-                    <Grid Justify="space-between" container>
+                    <Grid justifyContent="space-between" container>
                         <Grid item>
                             <Typography variant="h6">Today's todo</Typography>
                         </Grid>
                     </Grid>
                     <Grid>
-                        <Button color="inherit" onClick={signout}>Logout</Button>
+                        <Button color="inherit" onClick={signout}>
+                            Logout
+                        </Button>
                     </Grid>
                 </Toolbar>
             </AppBar>
@@ -101,7 +113,11 @@ class App extends React.Component {
 
         // var loadingPage = <h1>Loading...</h1>
         var loadingPage = (
-            <Container component="main" maxWidth="xs" style={{ marginTop: "10%" }}>
+            <Container
+                component="main"
+                maxWidth="xs"
+                style={{ marginTop: "10%" }}
+            >
                 <CircularProgress />
             </Container>
         );
@@ -111,7 +127,7 @@ class App extends React.Component {
             content = todoListPage;
         }
 
-        return <div className="App">{content}</div>
+        return <div className="App">{content}</div>;
 
         // return (
         //     <div className="App">

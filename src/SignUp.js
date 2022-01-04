@@ -1,7 +1,13 @@
-import { Container, Grid, TextField, Typography, Button, Link } from "@material-ui/core";
+import {
+    Container,
+    Grid,
+    TextField,
+    Typography,
+    Button,
+    Link,
+} from "@material-ui/core";
 import React from "react";
 import { signup } from "./service/ApiService";
-
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -10,32 +16,33 @@ class SignUp extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();        
-        
+        event.preventDefault();
+
         const data = new FormData(event.target);
         const username = data.get("username");
         const email = data.get("email");
-        const password = data.get("password")
+        const password = data.get("password");
 
         const user = {
             email: email,
             username: username,
-            password: password
-        }
+            password: password,
+        };
 
-        console.log("------------");
-        console.log(user);
-        console.log("------------");
-
-        signup(user);
+        signup(user).then((response) => {
+            window.location.href = "/login";
+        });
     }
 
     render() {
         return (
-            <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
+            <Container
+                component="main"
+                maxWidth="xs"
+                style={{ marginTop: "8%" }}
+            >
                 <form noValidate onSubmit={this.handleSubmit}>
                     <Grid container spacing={2}>
-
                         <Grid item xs={12}>
                             <Typography component="h1" variant="h5">
                                 Create Account
@@ -43,7 +50,7 @@ class SignUp extends React.Component {
                         </Grid>
 
                         <Grid item xs={12}>
-                            <TextField 
+                            <TextField
                                 autoComplete="fname"
                                 name="username"
                                 required
@@ -55,7 +62,7 @@ class SignUp extends React.Component {
                         </Grid>
 
                         <Grid item xs={12}>
-                            <TextField 
+                            <TextField
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -67,7 +74,7 @@ class SignUp extends React.Component {
                         </Grid>
 
                         <Grid item xs={12}>
-                            <TextField 
+                            <TextField
                                 required
                                 fullWidth
                                 variant="outlined"
@@ -85,7 +92,9 @@ class SignUp extends React.Component {
                                 fullWidth
                                 variant="contained"
                                 color="primary"
-                            >계정 생성</Button>
+                            >
+                                계정 생성
+                            </Button>
                         </Grid>
                     </Grid>
 
@@ -98,7 +107,7 @@ class SignUp extends React.Component {
                     </Grid>
                 </form>
             </Container>
-        )
+        );
     }
 }
 
