@@ -17,17 +17,17 @@ class SignUp extends React.Component {
         const email = data.get("email");
         const password = data.get("password")
 
-        signup({
+        const user = {
             email: email,
             username: username,
             password: password
-        }).then(
-            response => {
-                console.log(response);
-                window.location.href = "/login";
-            }
-        )
+        }
 
+        console.log("------------");
+        console.log(user);
+        console.log("------------");
+
+        signup(user);
     }
 
     render() {

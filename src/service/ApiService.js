@@ -62,7 +62,6 @@ export function signout() {
 }
 
 export function signup(userDTO) {
-    return call("/auth/signup", "POST", userDTO).then(response => {
-        console.log("signup completed");
-    });
+    console.log("signup executed");
+    return call("/auth/signup", "POST", userDTO);
 }
