@@ -5,7 +5,7 @@ import { signin } from "./service/ApiService";
 // import Grid from "@material-ui/core/Grid";
 // import Typography from "@material-ui/core/Typography";
 import { Container } from "@material-ui/core";
-import { Button, TextField, Grid, Typography } from "@material-ui/core";
+import { Button, TextField, Grid, Typography, Link } from "@material-ui/core";
 
 class Login extends React.Component {
     constructor(props) {
@@ -76,6 +76,11 @@ class Login extends React.Component {
                                 로그인
                             </Button>
                         </Grid>
+                        <Grid container justifyContent="center">
+                            <Link href="/signup" variant="body2">
+                                <Grid item>Let's create account rapidly</Grid>
+                            </Link>
+                        </Grid>                       
                     </Grid>
                 </form>
             </Container>

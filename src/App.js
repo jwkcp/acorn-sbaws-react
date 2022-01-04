@@ -2,7 +2,7 @@ import "./App.css";
 import Todo from "./Todo";
 import AddTodo from "./AppTodo";
 import React from "react";
-import { Paper, List, Container, Grid, Button, AppBar, Toolbar, Typography } from "@material-ui/core";
+import { Paper, List, Container, Grid, Button, AppBar, Toolbar, Typography, CircularProgress } from "@material-ui/core";
 import { call, signout } from "./service/ApiService";
 
 class App extends React.Component {
@@ -99,7 +99,12 @@ class App extends React.Component {
             </div>
         );
 
-        var loadingPage = <h1>Loading...</h1>
+        // var loadingPage = <h1>Loading...</h1>
+        var loadingPage = (
+            <Container component="main" maxWidth="xs" style={{ marginTop: "10%" }}>
+                <CircularProgress />
+            </Container>
+        );
         var content = loadingPage;
 
         if (!this.state.loading) {
